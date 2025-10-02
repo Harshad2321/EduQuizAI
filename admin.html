@@ -60,7 +60,7 @@
     </style>
 </head>
 <body>
-    <button id="darkModeToggle">🌙</button>
+    <button id="darkModeToggle">Dark Mode</button>
     <div class="container">
         <h2>Admin Panel</h2>
         <h3>Add New Quiz Question</h3>
@@ -93,16 +93,16 @@
         </form>
 
         <h3>Navigation</h3>
-        <button onclick="window.location.href='index.html'">🏠 Home</button>
-        <button onclick="window.location.href='help.html'">❓ Help</button>
-        <button onclick="logout()">🚪 Logout</button>
+        <button onclick="window.location.href='index.html'">Home</button>
+        <button onclick="window.location.href='help.html'">Help</button>
+        <button onclick="logout()">Logout</button>
     </div>
 
     <script>
         const darkModeToggle = document.getElementById('darkModeToggle');
         darkModeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
-            darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
         });
 
         function saveQuestion() {
