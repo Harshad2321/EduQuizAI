@@ -1,8 +1,8 @@
 # EduQuizAI
 
-🌐 **[Live Demo](https://harshad2321.github.io/EduQuizAI/)** | 📱 **[Mobile Friendly](https://harshad2321.github.io/EduQuizAI/)** | 🎮 **[Try Quiz](https://harshad2321.github.io/EduQuizAI/quiz.html)**
+� **2 Fast 2 Hack Hackathon Project** | �🌐 **[Live Demo](https://harshad2321.github.io/EduQuizAI/)** | 📱 **[Mobile Friendly](https://harshad2321.github.io/EduQuizAI/)** | 🎮 **[Try Quiz](https://harshad2321.github.io/EduQuizAI/quiz.html)**
 
-EduQuizAI is a web-based educational platform designed to enhance learning through interactive quizzes and AI-powered content generation. This project was initially developed during a college hackathon and represents a complete frontend implementation for an educational technology solution.
+EduQuizAI is a web-based educational platform designed to enhance learning through interactive quizzes and AI-powered content generation. This project was developed during the **2 Fast 2 Hack Hackathon** and represents a complete frontend implementation for an educational technology solution that successfully advanced through multiple rounds of competition.
 
 ## Project Overview
 
@@ -32,13 +32,23 @@ The platform enables students to upload their study materials and automatically 
 - **File Handling**: PDF upload interface (frontend only)
 - **Admin Interface**: Content management dashboard
 
-## Development Background
+## 🏆 2 Fast 2 Hack Hackathon Journey
 
-This project was developed during a college hackathon with the following milestones:
-- Successfully passed Round 1 with presentation and concept pitch
-- Complete frontend implementation within 8-hour development window
-- Focused on user experience and interface design
-- Built scalable architecture for future backend integration
+This project was developed during the **2 Fast 2 Hack Hackathon** - a competitive programming event focused on rapid innovation and development.
+
+### Competition Highlights:
+- **🎯 Round 1**: Successfully passed initial screening with innovative concept presentation
+- **⚡ Round 2**: Complete frontend implementation within strict 8-hour development window  
+- **🏅 Achievement**: Advanced through multiple elimination rounds with our educational technology solution
+- **💡 Focus**: Emphasis on user experience, modern UI/UX design, and scalable architecture
+- **🚀 Innovation**: AI-powered learning platform concept that impressed judges and competitors
+
+### Hackathon Skills Demonstrated:
+- **Rapid Prototyping**: Full-featured web application in limited timeframe
+- **Modern Web Technologies**: HTML5, CSS3, JavaScript with contemporary design patterns
+- **User-Centric Design**: Intuitive interface prioritizing student learning experience  
+- **Presentation Skills**: Effective communication of technical concepts to judges
+- **Team Collaboration**: Coordinated development within hackathon constraints
 
 ## Project Structure
 
