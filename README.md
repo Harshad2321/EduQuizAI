@@ -1,5 +1,7 @@
 # EduQuizAI
 
+🌐 **[Live Demo](https://harshad2321.github.io/EduQuizAI/)** | 📱 **[Mobile Friendly](https://harshad2321.github.io/EduQuizAI/)** | 🎮 **[Try Quiz](https://harshad2321.github.io/EduQuizAI/quiz.html)**
+
 EduQuizAI is a web-based educational platform designed to enhance learning through interactive quizzes and AI-powered content generation. This project was initially developed during a college hackathon and represents a complete frontend implementation for an educational technology solution.
 
 ## Project Overview
