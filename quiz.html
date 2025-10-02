@@ -3,80 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World War 1 Quiz</title>
-    <link rel="stylesheet" href="css/quiz.css">
+    <title>World War 1 Quiz - EduQuizAI</title>
+    <link rel="stylesheet" href="css/quiz-modern.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
-    <h1>World War 1 Quiz</h1>
-    <div class="timer">Time Left: <span id="time">60</span> seconds</div>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <span id="themeIcon">🌙</span>
+        <span id="themeText">Dark Mode</span>
+    </button>
+    
+    <div class="quiz-header">
+        <h1 class="quiz-title">World War I Knowledge Challenge</h1>
+        <div class="timer-container">
+            <div class="timer">Time Remaining: <span id="time">60</span> seconds</div>
+        </div>
+    </div>
+    
     <div class="container">
         <form id="quizForm">
-            <div class="question">
-                <p>1. When did World War 1 begin?</p>
-                <input type="radio" name="q1" value="0"> 1912 <br>
-                <input type="radio" name="q1" value="10"> 1914 <br>
-                <input type="radio" name="q1" value="0"> 1916 <br>
+            <div class="question-card">
+                <p class="question-text">1. When did World War I begin?</p>
+                <div class="options-container">
+                    <label class="option-label">
+                        <input type="radio" name="q1" value="0"> 1912
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="q1" value="10"> 1914
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="q1" value="0"> 1916
+                    </label>
+                </div>
             </div>
-            <div class="question">
-                <p>2. Which event triggered World War 1?</p>
-                <input type="radio" name="q2" value="0"> The sinking of Titanic <br>
-                <input type="radio" name="q2" value="0"> Treaty of Versailles <br>
-                <input type="radio" name="q2" value="10"> Assassination of Archduke Franz Ferdinand <br>
+            
+            <div class="question-card">
+                <p class="question-text">2. Which event triggered World War I?</p>
+                <div class="options-container">
+                    <label class="option-label">
+                        <input type="radio" name="q2" value="0"> The sinking of Titanic
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="q2" value="0"> Treaty of Versailles
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="q2" value="10"> Assassination of Archduke Franz Ferdinand
+                    </label>
+                </div>
             </div>
-            <div class="question">
-                <p>3. Which countries were part of the Triple Entente?</p>
-                <input type="radio" name="q3" value="10"> France, Russia, UK <br>
-                <input type="radio" name="q3" value="0"> Germany, Italy, Austria-Hungary <br>
-                <input type="radio" name="q3" value="0"> USA, France, Germany <br>
+            
+            <div class="question-card">
+                <p class="question-text">3. Which countries were part of the Triple Entente?</p>
+                <div class="options-container">
+                    <label class="option-label">
+                        <input type="radio" name="q3" value="10"> France, Russia, United Kingdom
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="q3" value="0"> Germany, Italy, Austria-Hungary
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="q3" value="0"> USA, France, Germany
+                    </label>
+                </div>
             </div>
-            <div class="question">
-                <p>4. What was the primary form of warfare in WW1?</p>
-                <input type="radio" name="q4" value="10"> Trench Warfare <br>
-                <input type="radio" name="q4" value="0"> Guerrilla Warfare <br>
-                <input type="radio" name="q4" value="0"> Nuclear Warfare <br>
+            
+            <div class="question-card">
+                <p class="question-text">4. What was the primary form of warfare in WWI?</p>
+                <div class="options-container">
+                    <label class="option-label">
+                        <input type="radio" name="q4" value="10"> Trench Warfare
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="q4" value="0"> Guerrilla Warfare
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="q4" value="0"> Naval Warfare
+                    </label>
+                </div>
             </div>
-            <div class="question">
-                <p>5. When did World War 1 end?</p>
-                <input type="radio" name="q5" value="0"> 1917 <br>
-                <input type="radio" name="q5" value="10"> 1918 <br>
-                <input type="radio" name="q5" value="0"> 1920 <br>
+            
+            <div class="question-card">
+                <p class="question-text">5. When did World War I officially end?</p>
+                <div class="options-container">
+                    <label class="option-label">
+                        <input type="radio" name="q5" value="0"> 1917
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="q5" value="10"> 1918
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="q5" value="0"> 1920
+                    </label>
+                </div>
             </div>
-            <button type="button" onclick="calculateScore()">Submit</button>
+            
+            <button type="button" class="submit-button" onclick="calculateScore()">
+                Submit Quiz
+            </button>
         </form>
-        <h2 id="result"></h2>
+        
+        <div id="result" class="result" style="display: none;"></div>
     </div>
+
     <script>
         let timeLeft = 60;
-        const timer = setInterval(() => {
-            if (timeLeft <= 0) {
-                clearInterval(timer);
-                calculateScore();
-            }
-            document.getElementById('time').textContent = timeLeft;
-            timeLeft--;
-        }, 1000);
+        let timerInterval;
+        let quizCompleted = false;
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeLeft <= 0 || quizCompleted) {
+                    clearInterval(timerInterval);
+                    if (!quizCompleted) {
+                        calculateScore();
+                    }
+                    return;
+                }
+                
+                // Update progress bar
+                const progress = ((60 - timeLeft) / 60) * 100;
+                document.getElementById('progressBar').style.width = progress + '%';
+                
+                document.getElementById('time').textContent = timeLeft;
+                timeLeft--;
+                
+                // Change timer color when time is running out
+                const timerElement = document.querySelector('.timer');
+                if (timeLeft <= 10) {
+                    timerElement.style.color = '#e53e3e';
+                    timerElement.style.animation = 'pulse 1s infinite';
+                } else if (timeLeft <= 30) {
+                    timerElement.style.color = '#fd8c00';
+                }
+            }, 1000);
+        }
 
         function calculateScore() {
+            if (quizCompleted) return;
+            
+            quizCompleted = true;
+            clearInterval(timerInterval);
+            
             let score = 0;
+            const totalQuestions = 5;
             const form = document.getElementById('quizForm');
             const answers = new FormData(form);
+            
             for (let entry of answers.values()) {
                 score += parseInt(entry);
             }
-            document.getElementById('result').textContent = 'Your Score: ' + score + '/100';
-            clearInterval(timer);
+            
+            const percentage = (score / (totalQuestions * 10)) * 100;
+            const resultElement = document.getElementById('result');
+            
+            // Hide form and show result
+            form.style.display = 'none';
+            resultElement.style.display = 'block';
+            
+            let message = '';
+            let emoji = '';
+            
+            if (percentage >= 90) {
+                message = 'Outstanding! You\'re a WWI expert!';
+                emoji = '🏆';
+                resultElement.style.background = 'linear-gradient(135deg, #48bb78 0%, #38a169 100%)';
+            } else if (percentage >= 70) {
+                message = 'Great job! You have solid knowledge!';
+                emoji = '🎉';
+                resultElement.style.background = 'linear-gradient(135deg, #4299e1 0%, #3182ce 100%)';
+            } else if (percentage >= 50) {
+                message = 'Good effort! Keep studying!';
+                emoji = '📚';
+                resultElement.style.background = 'linear-gradient(135deg, #ed8936 0%, #dd6b20 100%)';
+            } else {
+                message = 'Keep learning! You\'ll do better next time!';
+                emoji = '💪';
+                resultElement.style.background = 'linear-gradient(135deg, #f56565 0%, #e53e3e 100%)';
+            }
+            
+            resultElement.innerHTML = `
+                <div style="font-size: 3rem; margin-bottom: 1rem;">${emoji}</div>
+                <div>Your Score: ${score}/50 (${percentage.toFixed(1)}%)</div>
+                <div style="font-size: 1.2rem; margin-top: 1rem; font-weight: 500;">${message}</div>
+                <button onclick="restartQuiz()" style="margin-top: 1.5rem; padding: 0.75rem 2rem; background: rgba(255,255,255,0.2); border: 2px solid white; color: white; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                    Try Again
+                </button>
+            `;
+            
+            // Complete progress bar
+            document.getElementById('progressBar').style.width = '100%';
+            
+            // Add confetti effect for high scores
+            if (percentage >= 80) {
+                createConfetti();
+            }
+        }
+
+        function restartQuiz() {
+            location.reload();
         }
 
         function toggleTheme() {
             document.body.classList.toggle("dark-mode");
-            localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+            const isDark = document.body.classList.contains("dark-mode");
+            
+            document.getElementById('themeIcon').textContent = isDark ? '☀️' : '🌙';
+            document.getElementById('themeText').textContent = isDark ? 'Light Mode' : 'Dark Mode';
+            
+            localStorage.setItem("darkMode", isDark ? "true" : "false");
         }
-        (function() {
+
+        function createConfetti() {
+            const colors = ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe', '#00f2fe'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.cssText = `
+                        position: fixed;
+                        width: 10px;
+                        height: 10px;
+                        background: ${colors[Math.floor(Math.random() * colors.length)]};
+                        left: ${Math.random() * 100}vw;
+                        top: -10px;
+                        border-radius: 50%;
+                        pointer-events: none;
+                        z-index: 1000;
+                        animation: fall 3s linear forwards;
+                    `;
+                    
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 50);
+            }
+        }
+
+        // Add CSS for animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+            }
+            
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize
+        document.addEventListener("DOMContentLoaded", function() {
+            // Load theme
             if (localStorage.getItem("darkMode") === "true") {
                 document.body.classList.add("dark-mode");
+                document.getElementById('themeIcon').textContent = '☀️';
+                document.getElementById('themeText').textContent = 'Light Mode';
             }
-        })();
+            
+            // Start timer
+            startTimer();
+            
+            // Add click effects to options
+            document.querySelectorAll('.option-label').forEach(label => {
+                label.addEventListener('click', function() {
+                    // Remove selection from other options in the same question
+                    const questionCard = this.closest('.question-card');
+                    questionCard.querySelectorAll('.option-label').forEach(opt => {
+                        opt.style.background = '';
+                        opt.style.borderColor = '';
+                        opt.style.transform = '';
+                    });
+                    
+                    // Highlight selected option
+                    this.style.background = 'linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1))';
+                    this.style.borderColor = '#667eea';
+                    this.style.transform = 'translateX(8px)';
+                });
+            });
+        });
     </script>
 </body>
 </html>

@@ -1,47 +1,163 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login | EduQuizAi</title>
-       <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <div class="container">
-            <h2>Login</h2>
-            <input type="email" placeholder="Email" id="email">
-            <input type="password" placeholder="Password" id="password">
-            <button onclick="login()">Login</button>
-            <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EduQuizAI</title>
+    <link rel="stylesheet" href="css/auth-modern.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body>
+    <a href="index.html" class="back-home">
+        <span>🏠</span> Home
+    </a>
+    
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <span id="themeIcon">🌙</span>
+        <span id="themeText">Dark Mode</span>
+    </button>
+
+    <div class="login-container">
+        <div class="logo-section">
+            <div class="logo">EduQuizAI</div>
+            <p class="tagline">Smart Learning Platform</p>
         </div>
 
-        <script>
-            function login() {
-                let email = document.getElementById("email").value;
-                let password = document.getElementById("password").value;
-                let storedEmail = localStorage.getItem("email");
-                let storedPassword = localStorage.getItem("password");
+        <h2 class="form-title">Welcome Back!</h2>
+        
+        <form>
+            <div class="input-group">
+                <label class="input-label" for="email">Email Address</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    class="input-field"
+                    placeholder="Enter your email"
+                    required
+                >
+            </div>
+            
+            <div class="input-group">
+                <label class="input-label" for="password">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    class="input-field"
+                    placeholder="Enter your password"
+                    required
+                >
+            </div>
+            
+            <button type="button" class="login-button" onclick="login()">
+                Sign In
+            </button>
+        </form>
+        
+        <div class="divider">
+            <span>or</span>
+        </div>
+        
+        <p class="signup-link">
+            Don't have an account? <a href="signup.html">Create one here</a>
+        </p>
+    </div>
 
+    <script>
+        function login() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const storedEmail = localStorage.getItem("email");
+            const storedPassword = localStorage.getItem("password");
+
+            // Add loading state
+            const button = document.querySelector('.login-button');
+            const originalText = button.textContent;
+            button.textContent = 'Signing In...';
+            button.disabled = true;
+            button.style.opacity = '0.7';
+
+            // Simulate loading delay
+            setTimeout(() => {
                 if (email === storedEmail && password === storedPassword) {
-                    alert("Login Successful!");
-                    window.location.href = "index.html";
+                    // Success animation
+                    button.textContent = '✅ Success!';
+                    button.style.background = 'linear-gradient(135deg, #48bb78, #38a169)';
+                    
+                    setTimeout(() => {
+                        window.location.href = "index.html";
+                    }, 1000);
                 } else {
-                    alert("Invalid Credentials");
+                    // Error animation
+                    button.textContent = '❌ Invalid credentials';
+                    button.style.background = 'linear-gradient(135deg, #f56565, #e53e3e)';
+                    
+                    // Shake animation
+                    button.style.animation = 'shake 0.5s ease-in-out';
+                    
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                        button.style.animation = '';
+                        button.disabled = false;
+                        button.style.opacity = '1';
+                    }, 2000);
                 }
+            }, 1500);
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle("dark-mode");
+            const isDark = document.body.classList.contains("dark-mode");
+            
+            document.getElementById('themeIcon').textContent = isDark ? '☀️' : '🌙';
+            document.getElementById('themeText').textContent = isDark ? 'Light Mode' : 'Dark Mode';
+            
+            localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+        }
+
+        // Initialize theme and add animations
+        document.addEventListener("DOMContentLoaded", function() {
+            // Load saved theme
+            if (localStorage.getItem("darkMode") === "enabled") {
+                document.body.classList.add("dark-mode");
+                document.getElementById('themeIcon').textContent = '☀️';
+                document.getElementById('themeText').textContent = 'Light Mode';
             }
-
-            document.addEventListener("DOMContentLoaded", function () {
-                const darkModeToggle = document.getElementById("darkModeToggle");
-
-                if (localStorage.getItem("darkMode") === "enabled") {
-                    document.body.classList.add("dark-mode");
-                }
-
-                darkModeToggle.addEventListener("click", function () {
-                    document.body.classList.toggle("dark-mode");
-                    localStorage.setItem("darkMode", document.body.classList.contains("dark-mode") ? "enabled" : "disabled");
+            
+            // Add input animations
+            const inputs = document.querySelectorAll('.input-field');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'translateY(-2px)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'translateY(0)';
                 });
             });
-        </script>
-    </body>
-    </html>
+            
+            // Add enter key support
+            document.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    login();
+                }
+            });
+        });
+
+        // Add shake animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                75% { transform: translateX(5px); }
+            }
+            
+            .input-group {
+                transition: transform 0.3s ease;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

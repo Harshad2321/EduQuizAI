@@ -3,44 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard | EduQuizAi</title>
-    <link rel="stylesheet" href="css/leaderboard.css">
-
+    <title>Leaderboard - EduQuizAI</title>
+    <link rel="stylesheet" href="css/leaderboard-modern.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
 </head>
 <body>
-    <button id="darkModeToggle">Dark Mode</button>
+    <button id="darkModeToggle">
+        <span>🌙</span> Dark Mode
+    </button>
 
     <div class="container">
-        <h1>Leaderboard</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Name</th>
-                    <th>Score</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>1</td><td>John Doe</td><td>98</td></tr>
-                <tr><td>2</td><td>Jane Smith</td><td>95</td></tr>
-                <tr><td>3</td><td>Mike Johnson</td><td>92</td></tr>
-            </tbody>
-        </table>
+        <div class="header">
+            <h1 class="title">Hall of Champions</h1>
+            <p class="subtitle">Top performers in our learning community</p>
+        </div>
+
+        <div class="leaderboard-container">
+            <div class="podium">
+                <div class="podium-position second-place">
+                    <div class="podium-rank">2</div>
+                    <div class="podium-name">Jane Smith</div>
+                    <div class="podium-score">95 pts</div>
+                </div>
+                <div class="podium-position first-place">
+                    <div class="podium-rank">1</div>
+                    <div class="podium-name">John Doe</div>
+                    <div class="podium-score">98 pts</div>
+                </div>
+                <div class="podium-position third-place">
+                    <div class="podium-rank">3</div>
+                    <div class="podium-name">Mike Johnson</div>
+                    <div class="podium-score">92 pts</div>
+                </div>
+            </div>
+
+            <table>
+                <thead class="table-header">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="rank-cell">
+                            <span class="rank-badge rank-4">4</span>
+                        </td>
+                        <td class="name-cell">Sarah Wilson</td>
+                        <td class="score-cell">89</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">
+                            <span class="rank-badge rank-5">5</span>
+                        </td>
+                        <td class="name-cell">David Brown</td>
+                        <td class="score-cell">87</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">
+                            <span class="rank-badge rank-6">6</span>
+                        </td>
+                        <td class="name-cell">Emily Davis</td>
+                        <td class="score-cell">84</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">
+                            <span class="rank-badge rank-7">7</span>
+                        </td>
+                        <td class="name-cell">Alex Chen</td>
+                        <td class="score-cell">82</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">
+                            <span class="rank-badge rank-8">8</span>
+                        </td>
+                        <td class="name-cell">Lisa Garcia</td>
+                        <td class="score-cell">79</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">
+                            <span class="rank-badge rank-9">9</span>
+                        </td>
+                        <td class="name-cell">Robert Lee</td>
+                        <td class="score-cell">76</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-cell">
+                            <span class="rank-badge rank-10">10</span>
+                        </td>
+                        <td class="name-cell">Maria Rodriguez</td>
+                        <td class="score-cell">74</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="navigation-buttons">
+                <a href="index.html" class="nav-button">
+                    <span>🏠</span> Home
+                </a>
+                <a href="quiz.html" class="nav-button">
+                    <span>🧠</span> Take Quiz
+                </a>
+                <a href="admin.html" class="nav-button">
+                    <span>⚙️</span> Admin
+                </a>
+            </div>
+        </div>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const darkModeToggle = document.getElementById("darkModeToggle");
-
+            
+            // Load saved theme
             if (localStorage.getItem("darkMode") === "enabled") {
                 document.body.classList.add("dark-mode");
+                darkModeToggle.innerHTML = '<span>☀️</span> Light Mode';
             }
 
             darkModeToggle.addEventListener("click", function () {
                 document.body.classList.toggle("dark-mode");
-                localStorage.setItem("darkMode", document.body.classList.contains("dark-mode") ? "enabled" : "disabled");
+                const isDark = document.body.classList.contains("dark-mode");
+                
+                darkModeToggle.innerHTML = isDark 
+                    ? '<span>☀️</span> Light Mode' 
+                    : '<span>🌙</span> Dark Mode';
+                    
+                localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+                
+                // Add click animation
+                darkModeToggle.style.transform = "scale(0.95)";
+                setTimeout(() => {
+                    darkModeToggle.style.transform = "scale(1)";
+                }, 150);
+            });
+
+            // Add row hover animations
+            const tableRows = document.querySelectorAll('tbody tr');
+            tableRows.forEach((row, index) => {
+                row.style.animationDelay = `${index * 0.1}s`;
+                row.classList.add('fade-in');
+            });
+
+            // Add entrance animations to podium
+            const podiumPositions = document.querySelectorAll('.podium-position');
+            podiumPositions.forEach((position, index) => {
+                setTimeout(() => {
+                    position.style.transform = 'translateY(0)';
+                    position.style.opacity = '1';
+                }, index * 200);
             });
         });
+
+        // Add CSS for entrance animations
+        const style = document.createElement('style');
+        style.textContent = `
+            .podium-position {
+                transform: translateY(50px);
+                opacity: 0;
+                transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            }
+            
+            .fade-in {
+                animation: slideInLeft 0.6s ease forwards;
+            }
+            
+            @keyframes slideInLeft {
+                from {
+                    opacity: 0;
+                    transform: translateX(-30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
